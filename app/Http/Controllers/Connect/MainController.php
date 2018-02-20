@@ -51,7 +51,7 @@ class MainController extends Controller
         return $computer;//->save();
     }
     function get_club_id($username,$password){
-        $result = Center::where([ //
+        $result = Center::where([
             ['username_connect',$username],
             ['password_connect',$password]
             ])->value('id');
