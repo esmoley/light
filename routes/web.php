@@ -14,23 +14,23 @@
     return view('welcome');
 });
 */
-Route::any('/admin',function(){
-    Route::get('/','Admin\AdminController@index')->name('home');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'],function () {
+    Route::get('/','AdminController@index')->name('home');
     Route::get('/admin', function () {
         echo "asd";
     });
-    Route::get('/home', 'Admin\AdminController@index')->name('home');
-    Route::get('/dashboard', 'Admin\AdminController@index')->name('home');
+    Route::get('/home', 'AdminController@index')->name('home');
+    Route::get('/dashboard', 'AdminController@index')->name('home');
 
-    Route::resource('/computers','Admin\ComputersController');
-    Route::resource('/users','Admin\UsersClubController');
+    Route::resource('/computers','ComputersController');
+    Route::resource('/users','UsersClubController');
     //Route::get('/', 'Auth\LoginController@showLoginForm');
     //Route::post('login', 'Auth\LoginController@login');
     //Route::post('logout', 'Auth\LoginController@logout');
     Route::Auth();
 });
     
-Route::any('/connect',function(){
+Route::namespace('Connect')->group(function () {
     Route::get('/',function(){
         return view('connect.get');
     });
