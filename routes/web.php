@@ -15,10 +15,11 @@
 });
 */
 Route::any('/admin',function(){
-    Route::get('/','Admin\AdminController@index')->name('home');
-    /*Route::get('/', function () {
+    //Route::get('/','Admin\AdminController@index')->name('home');
+    echo "asd";
+    Route::get('/', function () {
         echo "asd";
-    });*/
+    });
     Route::get('/home', 'Admin\AdminController@index')->name('home');
     Route::get('/dashboard', 'Admin\AdminController@index')->name('home');
 
