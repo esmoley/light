@@ -16,7 +16,7 @@ class CenterCon extends Model
         $result = Center::where([
             ['username_connect',$username],
             ['password_connect',$password]
-            ]);
+            ])->first();
         return $result;
     }
 }
