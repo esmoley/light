@@ -18,9 +18,7 @@
     return 'are you looking for "52.166.220.81/admin" ?';
 });*/
 Route::get('/','Admin\AdminController@index')->name('home');
-//Route::get('/admin', function () {
-    echo "asd";
-//});
+
 Route::get('/home', 'Admin\AdminController@index')->name('home');
 Route::get('/dashboard', 'Admin\AdminController@index')->name('home');
 
@@ -34,4 +32,4 @@ Route::Auth();
 Route::get('/connect',function(){
     return view('connect.get');
 });
-Route::post('/connect', 'connect\MainController@store');
+Route::post('/connect', 'Connect\MainController@store');
