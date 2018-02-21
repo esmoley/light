@@ -4,13 +4,14 @@ namespace App\Connect;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Admin\Computer;
+use App\Enums\ErrorCode;
 class ComputerCon extends Model
 {
     private $computer;
     function __construct($request,$respond,$center_con){
-        if(!$this->mac($request))return $respond->error("wrong mac");
+        if(!$this->mac($request))return $respond->error(ErrorCode::WRONG_MAC);
         echo "ok";
-        if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error("computer error");
+        if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error(ErrorCode::COMPUTER_ERROR);
         $this->computer->save();
     }
     private function mac($request){
@@ -39,6 +40,6 @@ class ComputerCon extends Model
             ['club_id',$this->computer->club_id],
             ['current_user_id',$current_user_id],
             ['mac','!=',$this->computer->mac],
-        ])->first())return $respond->error("user logged in on another pc");;
+        ])->first())return $respond->error(ErrorCode::ANOTHER_PC_LOGGED_IN);;
     }
 }
