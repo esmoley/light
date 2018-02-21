@@ -38,7 +38,9 @@ Route::group(array('domain'=>"admin.".config('app.domain')),function () {
     //Route::post('logout', 'Auth\LoginController@logout');
     Route::Auth();
 });
-Route::get('/connect',function(){
-    return view('_con.get');
+Route::group(array('domain'=>"connect.".config('app.domain')),function () {
+    Route::get('/',function(){
+        return view('connect.get');
+    });
+    Route::post('/', 'connect\MainController@store');
 });
-Route::post('/connect', '_con\MainController@store');
