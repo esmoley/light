@@ -4,13 +4,14 @@ namespace App\Connect;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Admin\UserClub;
+use App\Enums\ErrorCode;
 
 class UserClubCon extends Model
 {
     function __construct($request,$respond,$center_con,$computer_con){
         if($request->login){
-            $user_club = $this->user_pair($request,$center_con->id);
-            $computer_con->UserComputerCheck($user_club->id,$respond);
+            if(!$user_club = $this->user_pair($request,$center_con->id))$respond->error(ErrorCode::BAD_USER_PAIR);
+            if(!$computer_con->UserComputerCheck($user_club->id,$respond))$respond->error(ErrorCode::ANOTHER_PC_LOGGED_IN);
         }
     }
     private function user_pair($request,$club_id){

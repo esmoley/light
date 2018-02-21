@@ -11,7 +11,7 @@ class ComputerCon extends Model
     function __construct($request,$respond,$center_con){
         if(!$this->mac($request))return $respond->error(ErrorCode::WRONG_MAC);
         echo "ok";
-        if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error(ErrorCode::COMPUTER_ERROR);
+        if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error(ErrorCode::COMPUTER_NOT_SELECTED_OR_CREATED);
         $this->computer->save();
     }
     private function mac($request){
@@ -40,6 +40,6 @@ class ComputerCon extends Model
             ['club_id',$this->computer->club_id],
             ['current_user_id',$current_user_id],
             ['mac','!=',$this->computer->mac],
-        ])->first())return $respond->error(ErrorCode::ANOTHER_PC_LOGGED_IN);;
+        ])->first())return false;
     }
 }
