@@ -14,15 +14,18 @@
     return view('welcome');
 });
 */
-Route::get('/admin','Admin\AdminController@index')->name('home');
+/*Route:get('/',function(){
+    return 'are you looking for "52.166.220.81/admin" ?';
+});*/
+Route::get('/','Admin\AdminController@index')->name('home');
 //Route::get('/admin', function () {
     echo "asd";
 //});
-Route::get('/admin/home', 'Admin\AdminController@index')->name('home');
-Route::get('/admin/dashboard', 'Admin\AdminController@index')->name('home');
+Route::get('/home', 'Admin\AdminController@index')->name('home');
+Route::get('/dashboard', 'Admin\AdminController@index')->name('home');
 
-Route::resource('/admin/computers','Admin\ComputersController');
-Route::resource('/admin/users','Admin\UsersClubController');
+Route::resource('/computers','Admin\ComputersController');
+Route::resource('/users','Admin\UsersClubController');
 //Route::get('/', 'Auth\LoginController@showLoginForm');
 //Route::post('login', 'Auth\LoginController@login');
 //Route::post('logout', 'Auth\LoginController@logout');
