@@ -10,6 +10,7 @@ class ComputerCon extends Model
     function __construct($request,$respond,$center_con){
         if(!$this->mac($request))return $respond->error("wrong mac");
         if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error("computer error");
+        echo "asd";
     }
     private function mac($request){
         if(!$request->mac || strlen($request->mac)<6){
