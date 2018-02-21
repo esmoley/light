@@ -9,6 +9,7 @@ class ComputerCon extends Model
     private $computer;
     function __construct($request,$respond,$center_con){
         if(!$this->mac($request))return $respond->error("wrong mac");
+        echo "ok";
         if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error("computer error");
         $this->computer->save();
     }
