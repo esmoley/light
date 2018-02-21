@@ -11,7 +11,7 @@ class Respond extends Model
         $this->data[$key] = $value;
     }
     public function error($value){
-        print json_encode (array("error"=>$value));
+        die(json_encode (array("error"=>$value)));
     }
     public function show(){
         print json_encode ($this->data);
