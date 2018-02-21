@@ -14,16 +14,7 @@
     return view('welcome');
 });
 */
-Route::group(array('domain'=>config('app.domain')),function () {
-    Route::get('/admin',function(){
-        return redirect("//admin.".config('app.domain')."/");
-    });
-    Route::get('/',function(){
-        echo "Are you looking for: <a href='http://admin.".config('app.domain')."/'>http://admin.".config('app.domain')."/</a>?";
-    });
-});
-Route::group(array('domain'=>"admin.".config('app.domain')),function () {
-//Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::any('/admin',function(){
     Route::get('/','Admin\AdminController@index')->name('home');
     /*Route::get('/', function () {
         echo "asd";
@@ -38,7 +29,8 @@ Route::group(array('domain'=>"admin.".config('app.domain')),function () {
     //Route::post('logout', 'Auth\LoginController@logout');
     Route::Auth();
 });
-Route::group(array('domain'=>"connect.".config('app.domain')),function () {
+    
+Route::any('/connect',function(){
     Route::get('/',function(){
         return view('connect.get');
     });
