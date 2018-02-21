@@ -8,8 +8,8 @@ class ComputerCon extends Model
 {
     private $computer;
     function __construct($request,$respond,$center_con){
-        if(!mac($request))return $respond->error("wrong mac");
-        if(!$this->computer = getComputer($request,$center_con->id))return $respond->error("computer error");
+        if(!$this->mac($request))return $respond->error("wrong mac");
+        if(!$this->computer = $this->getComputer($request,$center_con->id))return $respond->error("computer error");
     }
     private function mac($request){
         if(!$request->mac || strlen($request->mac)<6){
