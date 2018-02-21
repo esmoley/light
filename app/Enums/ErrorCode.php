@@ -2,8 +2,6 @@
 
 namespace App\Enums;
 
-use Illuminate\Database\Eloquent\Model;
-
 class ErrorCode extends Enum
 {
     //ComputerCon

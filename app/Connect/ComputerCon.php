@@ -4,7 +4,7 @@ namespace App\Connect;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Admin\Computer;
-use App\Enums\ErrorCode;
+use App\Enums;
 class ComputerCon extends Model
 {
     private $computer;
