@@ -16,8 +16,7 @@
 */
 Route::any('/admin',function(){
     //Route::get('/','Admin\AdminController@index')->name('home');
-    echo "asd";
-    Route::get('/', function () {
+    Route::get('/admin', function () {
         echo "asd";
     });
     Route::get('/home', 'Admin\AdminController@index')->name('home');
