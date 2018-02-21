@@ -14,5 +14,4 @@ class MainController extends Controller
         $user_con = new \App\Connect\UserClubCon($request,$respond,$center_con,$computer_con);
     }
     
-    
 }
