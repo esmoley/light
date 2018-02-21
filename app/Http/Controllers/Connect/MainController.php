@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Connect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Center;
-use App\Computer;
-use App\UserClub;
+use App\Admin\Computer;
+use App\Admin\UserClub;
 
 class MainController extends Controller
 {
@@ -19,8 +19,12 @@ class MainController extends Controller
         
         if(!$this->security->mac())return $this->respond->error("wrong_mac");
 
-        $club_id = $this->get_club_id($request->username_connect,$request->password_connect);if(!$club_id)return;
-        $computer = $this->getComputer($request,$club_id);if(!$computer){ return;};
+        if(!$club_id = $this->get_club_id($request->username_connect,$request->password_connect)){
+            return $this->respond->error("wrong club pair");
+        }
+        if(!$computer = $this->getComputer($request,$club_id)){
+            return $this->respond->error("computer not found");
+        }
         if($request->login)$this->userLogin($request,$club_id);
         $computer->save();
     }
