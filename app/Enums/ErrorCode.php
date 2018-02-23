@@ -12,4 +12,5 @@ class ErrorCode extends Enum
     //UserClubCon
     const BAD_USER_PAIR = 300;
     const ANOTHER_PC_LOGGED_IN = 301;
+    const BAD_USER = 302;
 }
