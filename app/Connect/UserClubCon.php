@@ -12,10 +12,14 @@ class UserClubCon extends Model
         if($request->login){
             if(!$user_club = $this->user_pair($request,$center_con->id))$respond->error(ErrorCode::BAD_USER_PAIR);
             if(!$computer_con->UserComputerCheck($user_club->id,$respond))$respond->error(ErrorCode::ANOTHER_PC_LOGGED_IN);
-        }else{
+            $respond->add("user",$user_club->username);
+        }/*else if($request->username){
             if(!$user_club = $this->user_name($request,$center_con->id))$respond->error(ErrorCode::BAD_USER);
-        }
-        $respond->add("user",$user_club->username);
+            $respond->add("user",$user_club->username);
+        }else{
+
+        }*/
+        
         //$respond->add("user",$user_club->username);
     }
     private function user_pair($request,$club_id){
