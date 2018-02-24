@@ -29,7 +29,8 @@ Route::resource('/users','Admin\UsersClubController');
 //Route::post('logout', 'Auth\LoginController@logout');
 Route::Auth();
     
+/*
 Route::get('/connect',function(){
     return view('connect.get');
 });
-Route::post('/connect', 'Connect\MainController@store');
+Route::post('/connect', 'Connect\MainController@store');*/
