@@ -1,11 +1,11 @@
 <?php if($secret!="afuhznkxjcvnkjasdgihgkjrweqqwr")die();
 	class Computer{
-		public $mac;
-		public $db;
+		private $db;
+		private $respond;
 		function __construct($db,$respond){
-			$this->mac = $_REQUEST['mac'];
 			$this->db = $db;
-			if($this->mac=="")$respond->error("wrong mac");
+			$this->respond = $respond;
+			if($_REQUEST['mac']=="")$this->respond->error("WRONG_MAC");
 			
 			/*$query = "select *, TIMESTAMPDIFF(SECOND,last_update,now()) as last_updatePASSED
 			from ".DB_COMPUTERS."
@@ -17,6 +17,11 @@
 					
 				}
 			}*/
-		} 
+		}
+		function get_current(){
+			return $this->db->get_one("select *, TIMESTAMPDIFF(SECOND,last_update,now()) as last_updatePASSED
+			from `computers`
+			where mac='".mysql_escape_string($_REQUEST['mac'])."'");
+		}
 	}
 ?>

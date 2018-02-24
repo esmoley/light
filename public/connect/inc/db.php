@@ -2,7 +2,6 @@
 
 class DB{
     public $users_table = 'users_club';
-    public $computers_table = 'computers';
     private $conn;
     function __construct($respond){
         $this->conn = new mysqli('localhost', 'root', 'HanSolo55911', 'light');
